@@ -1,11 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import {MatSidenavModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule} from '@angular/material';
+import {AppComponent} from './app.component';
+import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NavigationComponent } from './navigation/navigation.component';
-import { LayoutModule } from '@angular/cdk/layout';
+import {NavigationComponent} from './navigation/navigation.component';
+import {LayoutModule} from '@angular/cdk/layout';
+import {AppRoutingModule} from './app-routing.module';
+import {ChapterModule} from '../chapter/chapter.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    AppRoutingModule,
+    ChapterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
