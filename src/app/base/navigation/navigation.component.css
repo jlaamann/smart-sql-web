@@ -1,5 +1,11 @@
 .navbar {
+  display: inline-grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 10em;
 }
 .menu-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
