@@ -8,11 +8,13 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {AppRoutingModule} from './app-routing.module';
 import {ChapterModule} from '../chapter/chapter.module';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,
