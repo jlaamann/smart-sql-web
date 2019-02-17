@@ -12,6 +12,10 @@ $margin-percentage: 20%;
   box-shadow: 2px 2px 5px #888888;
 }
 
+.panel-header {
+  grid-column: main;
+}
+
 .panel-content {
   grid-column: main;
 }
