@@ -16,6 +16,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import {AppRoutingModule} from './app-routing.module';
 import {ChapterModule} from '../chapter/chapter.module';
 import { PanelComponent } from './panel/panel.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PanelComponent } from './panel/panel.component';
     MatIconModule,
     MatListModule,
     AppRoutingModule,
-    ChapterModule
+    ChapterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
