@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ChapterComponent} from './chapter.component';
 
 const routes: Routes = [
-  {path: 'chapter', component: ChapterComponent}
+  {path: 'chapter/:id', component: ChapterComponent}
 ];
 
 @NgModule({
@@ -14,4 +14,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class ChapterRoutingModule {}
+export class ChapterRoutingModule {
+}
