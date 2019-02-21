@@ -17,6 +17,15 @@ import {AppRoutingModule} from './app-routing.module';
 import {ChapterModule} from '../chapter/chapter.module';
 import { PanelComponent } from './panel/panel.component';
 import {HttpClientModule} from "@angular/common/http";
+import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
+
+import sql from 'highlight.js/lib/languages/sql';
+
+export function hljsLanguages() {
+  return [
+    {name: 'sql', func: sql},
+  ];
+}
 
 @NgModule({
   declarations: [
@@ -36,9 +45,16 @@ import {HttpClientModule} from "@angular/common/http";
     MatListModule,
     AppRoutingModule,
     ChapterModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        languages: hljsLanguages,
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
