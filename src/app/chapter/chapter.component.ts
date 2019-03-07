@@ -31,7 +31,6 @@ export class ChapterComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.id);
   }
 
 }

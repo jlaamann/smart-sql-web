@@ -1,4 +1,8 @@
 <div class="chapter-container mat-typography">
 
   <div class="chapter-text" #dataContainer></div>
+  <div class="chapter-text exercise-section">
+    <!--todo: remove id > 0 hack later-->
+    <app-exercise [chapterId]="id" *ngIf="id > 0"></app-exercise>
+  </div>
 </div>

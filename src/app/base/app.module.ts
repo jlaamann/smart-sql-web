@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {
-  MatButtonModule,
+  MatButtonModule, MatFormFieldModule,
   MatIconModule,
   MatListModule,
   MatMenuModule,

@@ -1,0 +1,5 @@
+<h1>Harjutused</h1>
+<mat-form-field class="sql-input">
+  <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
+</mat-form-field>
+<button mat-button (click)="runSQL(sqlInput.value)"><i class="fas fa-caret-right"></i> Käivita SQL</button>
