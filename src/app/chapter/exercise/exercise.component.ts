@@ -14,7 +14,7 @@ export class ExerciseComponent implements OnInit {
   lastResult: ExerciseResult = undefined;
   hasNotTimedOutShowResult = false;
 
-  readonly TIMEOUT_LENGTH = 5000; // time in ms that the result of the query appears on screen
+  readonly RESULT_MESSAGE_TIMEOUT = 5000;
 
   constructor(private exerciseService: ExerciseService) {
   }
@@ -29,7 +29,7 @@ export class ExerciseComponent implements OnInit {
       this.hasNotTimedOutShowResult = true;
       setTimeout(() => {
         this.hasNotTimedOutShowResult = !this.hasNotTimedOutShowResult;
-      }, this.TIMEOUT_LENGTH);
+      }, this.RESULT_MESSAGE_TIMEOUT);
     });
   }
 
