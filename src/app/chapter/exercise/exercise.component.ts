@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ExerciseService} from "./service/exercise-service";
 
 @Component({
   selector: 'app-exercise',
@@ -9,7 +10,7 @@ export class ExerciseComponent implements OnInit {
 
   @Input() chapterId: number;
 
-  constructor() {
+  constructor(private exerciseService: ExerciseService) {
   }
 
   ngOnInit() {
@@ -17,5 +18,6 @@ export class ExerciseComponent implements OnInit {
 
   runSQL(query) {
     console.log(query);
+    this.exerciseService.validateSql(query);
   }
 }
