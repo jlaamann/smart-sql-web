@@ -34,12 +34,13 @@ export class ExerciseComponent implements OnInit {
   }
 
   showLastResult(): boolean {
-    return this.lastResult !== undefined && this.hasNotTimedOutShowResult;
+    return this.lastResult !== undefined && (this.hasNotTimedOutShowResult
+      || this.lastResult.queryResult === QueryResult.OK);
   }
 
   getLastResultText(): string {
     if (this.lastResult.queryResult === QueryResult.OK) {
-      return 'Õige!;';
+      return 'Õige! Võid järgmise ülesande juurde minna!'; // todo: kuvada teine tekst, kui ylesanded otsas
     } else {
       return 'Vale! Proovi uuesti!';
     }
