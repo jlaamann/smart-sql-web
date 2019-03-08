@@ -10,7 +10,7 @@ export class ExerciseService {
   constructor(private exerciseRepo: ExerciseRepository) {
   }
 
-  validateSql(sql: string): void {
-    this.exerciseRepo.validateSql(sql).then(res => console.log(res));
+  validateSql(sql: string): Promise<ExerciseResult> {
+    return this.exerciseRepo.validateSql(sql);
   }
 }

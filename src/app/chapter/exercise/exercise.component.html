@@ -1,4 +1,5 @@
 <h1>Harjutused</h1>
+<p *ngIf="showLastResult()">{{getLastResultText()}}</p>
 <mat-form-field class="sql-input">
   <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
 </mat-form-field>
