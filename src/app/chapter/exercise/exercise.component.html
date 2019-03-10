@@ -1,6 +1,9 @@
 <h1>Harjutused</h1>
-<p *ngIf="showLastResult()">{{getLastResultText()}}</p>
-<mat-form-field class="sql-input">
-  <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
-</mat-form-field>
-<button mat-button (click)="runSQL(sqlInput.value)"><i class="fas fa-caret-right"></i> Käivita SQL</button>
+<div class="exercise-question" *ngFor="let exercise of exercises; let i = index" [attr.data-index]="i">
+  <p *ngIf="showLastResult(exercise.id)">{{getLastResultText(exercise.id)}}</p>
+  <h2>{{i+1}}. {{exercise.question}}</h2>
+  <mat-form-field class="sql-input">
+    <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
+  </mat-form-field>
+  <button mat-button (click)="runSQL(exercise.id, sqlInput.value)"><i class="fas fa-caret-right"></i> Käivita SQL</button>
+</div>

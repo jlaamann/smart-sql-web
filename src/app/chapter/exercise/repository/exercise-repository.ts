@@ -9,7 +9,7 @@ export class ExerciseRepository {
 
   constructor(private http: HttpClient) {}
 
-  validateSql(sql: string): Promise<ExerciseResult> {
+  validateSql(exerciseId: number, sql: string): Promise<ExerciseResult> {
     return this.http.get<ExerciseResult>(`${this.url}/test`).toPromise();
   }
 }

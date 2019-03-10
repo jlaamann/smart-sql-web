@@ -1,3 +1,7 @@
 .sql-input {
   width: 100%;
 }
+
+.exercise-question {
+  margin-bottom: 1em;
+}

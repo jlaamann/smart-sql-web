@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ExerciseService} from "./service/exercise-service";
 import {ExerciseResult} from "./model/exercise-result";
 import {QueryResult} from "./model/query-result";
+import {Exercise} from "./model/exercise";
 
 @Component({
   selector: 'app-exercise',
@@ -11,35 +12,31 @@ import {QueryResult} from "./model/query-result";
 export class ExerciseComponent implements OnInit {
 
   @Input() chapterId: number;
-  lastResult: ExerciseResult = undefined;
-  hasNotTimedOutShowResult = false;
-
-  readonly RESULT_MESSAGE_TIMEOUT = 5000;
+  exercises: Exercise[] = [];
+  resultMap: { [key: number]: ExerciseResult} = {};
 
   constructor(private exerciseService: ExerciseService) {
   }
 
   ngOnInit() {
+    this.exerciseService.getExercises(this.chapterId)
+      .then(exercises => {
+        this.exercises = exercises;
+        this.exercises.forEach(ex => this.resultMap[ex.id] = undefined);
+      });
   }
 
-  runSQL(query) {
+  runSQL(exerciseId, query) {
     console.log(query);
-    this.exerciseService.validateSql(query).then(res => {
-      this.lastResult = res;
-      this.hasNotTimedOutShowResult = true;
-      setTimeout(() => {
-        this.hasNotTimedOutShowResult = !this.hasNotTimedOutShowResult;
-      }, this.RESULT_MESSAGE_TIMEOUT);
-    });
+    this.exerciseService.validateSql(exerciseId, query).then(res => this.resultMap[exerciseId] = res);
   }
 
-  showLastResult(): boolean {
-    return this.lastResult !== undefined && (this.hasNotTimedOutShowResult
-      || this.lastResult.queryResult === QueryResult.OK);
+  showLastResult(exerciseId): boolean {
+    return this.resultMap[exerciseId] !== undefined;
   }
 
-  getLastResultText(): string {
-    if (this.lastResult.queryResult === QueryResult.OK) {
+  getLastResultText(exerciseId): string {
+    if (this.resultMap[exerciseId].queryResult === QueryResult.OK) {
       return 'Õige! Võid järgmise ülesande juurde minna!'; // todo: kuvada teine tekst, kui ylesanded otsas
     } else {
       return 'Vale! Proovi uuesti!';
