@@ -19,6 +19,7 @@ export class ChapterComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = +params['id'];
+      console.log(this.id);
       this.http.get('assets/chapters/chapter' + this.id + '.html', {responseType: 'text'})
         .subscribe(data => {
           this.loadData(data); // todo error handling

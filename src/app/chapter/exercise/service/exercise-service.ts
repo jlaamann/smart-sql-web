@@ -16,16 +16,6 @@ export class ExerciseService {
   }
 
   getExercises(chapterId: number): Promise<Exercise[]> {
-    // todo fetch exercises from be
-    let exercises = [];
-    let ex1 = new Exercise();
-    ex1.question = 'Leia kõik kirjed, mis ...';
-    ex1.id = 0;
-    let ex2 = new Exercise();
-    ex2.question = 'Leia ...?';
-    ex2.id = 1;
-    exercises.push(ex1);
-    exercises.push(ex2);
-    return Promise.resolve(exercises);
+    return this.exerciseRepo.getExercisesByChapterId(chapterId);
   }
 }

@@ -4,6 +4,7 @@ import {ExerciseResult} from "../model/exercise-result";
 import {ExerciseValidationModel} from "../model/exercise-validation-model";
 import {map} from "rxjs/operators";
 import {StatementType} from "../model/statement-type";
+import {Exercise} from "../model/exercise";
 
 @Injectable()
 export class ExerciseRepository {
@@ -19,5 +20,9 @@ export class ExerciseRepository {
     validation.statementType = StatementType.SELECT;
     return this.http.post(`${this.url}`, validation)
       .pipe(map((res: ExerciseResult) => res)).toPromise();
+  }
+
+  getExercisesByChapterId(chapterId: number): Promise<Exercise[]> {
+    return this.http.get<Exercise[]>(`${this.url}/chapter/${chapterId}`).toPromise();
   }
 }

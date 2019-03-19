@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {ExerciseService} from "./service/exercise-service";
 import {ExerciseResult} from "./model/exercise-result";
 import {QueryResult} from "./model/query-result";
@@ -9,7 +9,7 @@ import {Exercise} from "./model/exercise";
   templateUrl: './exercise.component.html',
   styleUrls: ['./exercise.component.css']
 })
-export class ExerciseComponent implements OnInit {
+export class ExerciseComponent implements OnChanges {
 
   @Input() chapterId: number;
   exercises: Exercise[] = [];
@@ -18,7 +18,11 @@ export class ExerciseComponent implements OnInit {
   constructor(private exerciseService: ExerciseService) {
   }
 
-  ngOnInit() {
+  ngOnChanges() {
+    this.loadExercises();
+  }
+
+  loadExercises(): void {
     this.exerciseService.getExercises(this.chapterId)
       .then(exercises => {
         this.exercises = exercises;
