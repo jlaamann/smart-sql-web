@@ -1,6 +1,26 @@
-<h1>chapter 2</h1>
+<h1>AND, OR ja NOT</h1>
 
-<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+<h2>AND ja OR</h2>
 
-<pre class="code-block"><code><span class="keyword">CREATE OR REPLACE VIEW</span> v_mingi_vaade <span class="keyword">AS SELECT * FROM</span> users;
-</code></pre>
+<p>Mitme tingimuse kokku sidumiseks WHERE-klauslis tuleb kasutada loogilisi operaatoreid AND ja OR.  AND eeldab seda, et mõlemad tingimused oleksid tõesed, OR aga vaid ühte.
+</p>
+
+<pre class="code-block"><code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> country = 'Soviet Union'
+    <b>AND</b> director = 'Andrei Tarkovsky';
+<b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> director = 'Federico Fellini'
+    <b>OR</b> director = 'Roberto Rossellini';</code>
+</pre>
+
+<h2>NOT</h2>
+
+<p>Eituseks on PostgreSQL-is mitu viisi. Vaatame neist lähemalt kahte.</p>
+
+<p>Üheks võimaluseks on kasutada NOT-võtmesõna, mis tuleb paigutada eitatava tingimuse ette.</p>
+
+<pre class="code-block"><code><b>SELECT</b> * <b>FROM</b> film <b>WHERE NOT</b> director = 'Alfred Hitchcock';</code>
+</pre>
+
+<p>Teiseks võimaluseks on kasutada operaatorit !=.  Nii saame eelmise päringu ümber kirjutada järgnevalt:</p>
+
+<pre class="code-block"><code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> director != 'Alfred Hitchcock';</code>
+</pre>
