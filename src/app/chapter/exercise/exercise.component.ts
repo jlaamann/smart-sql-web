@@ -52,11 +52,22 @@ export class ExerciseComponent implements OnChanges, OnInit {
   }
 
   getLastResultText(exerciseId): string {
-    if (this.resultMap[exerciseId].queryResult === QueryResult.OK) {
-      return 'Õige! Võid järgmise ülesande juurde minna!'; // todo: kuvada teine tekst, kui ylesanded otsas
+    if (this.allExercisesDone()) {
+      return 'Õige! Võid järgmist peatükki alustada!';
+    } else if (this.resultMap[exerciseId].queryResult === QueryResult.OK) {
+      return 'Õige! Võid järgmise ülesande juurde minna!';
     } else {
       return 'Vale! Proovi uuesti!';
     }
+  }
+
+  allExercisesDone(): boolean {
+    for (const key in this.resultMap) {
+      if (this.resultMap[key] === undefined || this.resultMap[key].queryResult === QueryResult.FAIL) {
+        return false;
+      }
+    }
+    return true;
   }
 
   getIcon(id: number): string {
