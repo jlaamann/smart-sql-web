@@ -36,10 +36,11 @@
   <code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> title = 'L''Avventura';</code>
 </pre>
 
-Arvude puhul on võimalik rakendada ka operaatoreid >, <, >= ja <=. Järgnev päring tagastab kõik filmid, mis on pikemad kui 120 minutit:
+Arvude ja kuupäevade puhul on võimalik rakendada ka operaatoreid >, <, >= ja <=.
 
 <pre class="code-block">
-  <code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> runtime >= 120;</code>
+  <code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> runtime > 120;
+  <b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> release_date > '01-FEB-1980'</code>
 </pre>
 
 <p>Järgmises peatükis vaatame, kuidas saab lisada WHERE-klauslile mitu tingimust.</p>
