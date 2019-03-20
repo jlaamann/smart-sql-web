@@ -2,24 +2,18 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {
-  MatButtonModule, MatFormFieldModule,
-  MatIconModule,
-  MatListModule,
-  MatMenuModule,
-  MatSidenavModule,
-  MatToolbarModule
-} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavigationComponent} from './navigation/navigation.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {AppRoutingModule} from './app-routing.module';
 import {ChapterModule} from '../chapter/chapter.module';
-import { PanelComponent } from './panel/panel.component';
+import {PanelComponent} from './panel/panel.component';
 import {HttpClientModule} from "@angular/common/http";
-import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
+import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
 import sql from 'highlight.js/lib/languages/sql';
+import {NgProgressModule} from "@ngx-progressbar/core";
 
 export function hljsLanguages() {
   return [
@@ -43,6 +37,10 @@ export function hljsLanguages() {
     MatButtonModule,
     MatIconModule,
     MatListModule,
+    NgProgressModule.withConfig({
+        spinnerPosition: 'left',
+        color: '#ff0061'
+      }),
     AppRoutingModule,
     ChapterModule,
     HttpClientModule,

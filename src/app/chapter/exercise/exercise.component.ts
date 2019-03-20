@@ -1,21 +1,28 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {ExerciseService} from "./service/exercise-service";
 import {ExerciseResult} from "./model/exercise-result";
 import {QueryResult} from "./model/query-result";
 import {Exercise} from "./model/exercise";
+import {NgProgress, NgProgressRef} from "@ngx-progressbar/core";
 
 @Component({
   selector: 'app-exercise',
   templateUrl: './exercise.component.html',
   styleUrls: ['./exercise.component.css']
 })
-export class ExerciseComponent implements OnChanges {
+export class ExerciseComponent implements OnChanges, OnInit {
 
   @Input() chapterId: number;
   exercises: Exercise[] = [];
   resultMap: { [key: number]: ExerciseResult} = {};
+  progressRef: NgProgressRef;
 
-  constructor(private exerciseService: ExerciseService) {
+  constructor(private exerciseService: ExerciseService,
+              private ngProgress: NgProgress) {
+  }
+
+  ngOnInit(): void {
+    this.progressRef = this.ngProgress.ref();
   }
 
   ngOnChanges() {
@@ -31,8 +38,13 @@ export class ExerciseComponent implements OnChanges {
   }
 
   runSQL(exerciseId, query) {
+    this.progressRef.start();
     this.resultMap[exerciseId] = undefined;
-    this.exerciseService.validateSql(exerciseId, query).then(res => this.resultMap[exerciseId] = res);
+    this.exerciseService.validateSql(exerciseId, query)
+      .then(res => {
+        this.progressRef.complete();
+        this.resultMap[exerciseId] = res;
+      });
   }
 
   showLastResult(exerciseId): boolean {
