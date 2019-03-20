@@ -31,7 +31,7 @@ export class ExerciseComponent implements OnChanges {
   }
 
   runSQL(exerciseId, query) {
-    console.log(query);
+    this.resultMap[exerciseId] = undefined;
     this.exerciseService.validateSql(exerciseId, query).then(res => this.resultMap[exerciseId] = res);
   }
 
@@ -45,5 +45,10 @@ export class ExerciseComponent implements OnChanges {
     } else {
       return 'Vale! Proovi uuesti!';
     }
+  }
+
+  getIcon(id: number): string {
+    return this.resultMap[id].queryResult === QueryResult.OK ? "fas fa-check result-icon-correct"
+      : "result-icon-false fas fa-times";
   }
 }

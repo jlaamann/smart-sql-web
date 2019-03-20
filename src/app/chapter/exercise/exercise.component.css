@@ -5,3 +5,11 @@
 .exercise-question {
   margin-bottom: 1em;
 }
+
+.result-icon-correct {
+  color: forestgreen;
+}
+
+.result-icon-false {
+  color: darkred;
+}
