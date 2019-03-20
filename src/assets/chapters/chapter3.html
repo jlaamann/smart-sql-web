@@ -1,0 +1,29 @@
+<h1>3. LIKE ja IN</h1>
+
+<h2>LIKE</h2>
+
+<p>Sõne andmetüübiga veergudel on võimalik kasutada operaatorit LIKE. See on kasulik siis, kui otsime kirjeid, millel sõne veerg sisaldab teatud ühist osa või kui me ei tea sõne täpset kuju. Sõne osa, mida me ei soovi välja kirjutada, tuleb asendada metamärgiga (%).
+</p>
+
+<p>Näiteks, kui tahame leida kõik filmid, mis algavad sõnaga “The”, moodustame järgneva päringu:</p>
+
+<pre class="code-block"><code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> title <b>LIKE</b> 'The%';</code>
+</pre>
+
+<p>Eelneva päringu tulemusena saame kätte nii filmi “The Godfather“ kui ka filmi “The Searchers”.</p>
+
+<h2>IN</h2>
+
+<p>Meenutame, kuidas eelmises peatükis kasutasime ORi, kui ühel veerul võis olla mitu erinevat väärtust:</p>
+
+<pre class="code-block"><code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> director = 'Federico Fellini'
+  <b>OR</b> director = 'Roberto Rossellini';</code>
+</pre>
+
+<p>Sama päringu saaks mugavamalt ümber kirjutada IN-võtmesõna kasutades:</p>
+
+<pre class="code-block"><code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> director <b>IN</b> ('Federico Fellini',
+  'Roberto Rossellini');</code>
+</pre>
+
+<p>IN-võtmesõnale peavad sulgudes järgnema veeru võimalikud väärtused.</p>
