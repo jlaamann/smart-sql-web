@@ -6,4 +6,7 @@
     <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
   </mat-form-field>
   <button mat-button (click)="runSQL(exercise.id, sqlInput.value)"><i class="fas fa-caret-right"></i> Käivita SQL</button>
+  <button mat-button (click)="toggleShowAnswer(exercise.id)"><i class="fas fa-question-circle"></i> {{getShowAnswerText(exercise.id)}}</button>
+  <h3 *ngIf="showAnswer(exercise.id)">Vastus: {{exercise.answer}}</h3>
+
 </div>

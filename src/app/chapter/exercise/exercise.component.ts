@@ -15,6 +15,7 @@ export class ExerciseComponent implements OnChanges, OnInit {
   @Input() chapterId: number;
   exercises: Exercise[] = [];
   resultMap: { [key: number]: ExerciseResult} = {};
+  showAnswerMap: { [key: number]: boolean} = {};
   progressRef: NgProgressRef;
 
   constructor(private exerciseService: ExerciseService,
@@ -33,7 +34,10 @@ export class ExerciseComponent implements OnChanges, OnInit {
     this.exerciseService.getExercises(this.chapterId)
       .then(exercises => {
         this.exercises = exercises;
-        this.exercises.forEach(ex => this.resultMap[ex.id] = undefined);
+        this.exercises.forEach(ex => {
+          this.resultMap[ex.id] = undefined;
+          this.showAnswerMap[ex.id] = false;
+        });
       });
   }
 
@@ -73,5 +77,17 @@ export class ExerciseComponent implements OnChanges, OnInit {
   getIcon(id: number): string {
     return this.resultMap[id].queryResult === QueryResult.OK ? "fas fa-check result-icon-correct"
       : "result-icon-false fas fa-times";
+  }
+
+  toggleShowAnswer(id: number): void {
+    this.showAnswerMap[id] = !this.showAnswerMap[id];
+  }
+
+  showAnswer(id: number): boolean {
+    return this.showAnswerMap[id];
+  }
+
+  getShowAnswerText(id: number): string {
+    return this.showAnswerMap[id] === false ? 'Kuva vastus' : 'Peida vastus';
   }
 }
