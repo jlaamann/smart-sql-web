@@ -1,19 +1,21 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgProgressComponent} from "@ngx-progressbar/core";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit {
 
   @ViewChild(NgProgressComponent) progressBar: NgProgressComponent;
 
-  constructor() {
+  constructor(private titleService: Title) {
   }
 
-  ngAfterViewInit(): void {
-    // this.progressBar.start();
+  ngOnInit(): void {
+    this.titleService.setTitle('andmebaas.dev');
   }
+
 }
