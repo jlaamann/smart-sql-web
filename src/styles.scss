@@ -10,7 +10,7 @@ html { background-color: #f5f5f5; }
 $custom-typography: mat-typography-config(
   $font-family: '"Raleway", Roboto, Georgia',
   $headline: mat-typography-level(32px, 48px, 700),
-  $body-1: mat-typography-level(16px, 24px, 500)
+  $body-1: mat-typography-level(14px, 24px, 500)
 );
 
 // Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).

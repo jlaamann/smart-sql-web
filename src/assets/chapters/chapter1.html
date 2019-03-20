@@ -1,7 +1,45 @@
-<h1>1. Lihtsamad päringud</h1>
-<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+<h1>1. SELECT, FROM ja WHERE</h1>
 
-<pre class="code-block"><code><span class="keyword">CREATE OR REPLACE VIEW</span> v_mingi_vaade <span class="keyword">AS SELECT * FROM</span> users;</code></pre>
+<h2>SELECT ja FROM</h2>
 
-<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+<p>Andmete pärimiseks andmebaasist kasutatakse SELECT-lauset. Kõik päringud sisaldavad vähemalt kahte klauslit - SELECT ja FROM. SELECTiga määrame, milliseid veerge päringu tulemusena soovime. Tabelist on võimalik valida ka kõiki veerge, kasutades SELECTi järel tärni. FROM-klausliga määrame tabeli, kust andmed päritakse.</p>
+
+<pre class="code-block">
+  <code><b>SELECT</b> * <b>FROM</b> tabel;
+  <b>SELECT</b> veerg1, veerg2 <b>FROM</b> tabel;</code>
+</pre>
+
+<h2>WHERE</h2>
+
+<p>Meil on olemas tabel <b>film</b>, mille põhjal saab harjutuste sektsioonis ülesandeid lahendada. Tabel sisaldab kirjeid filmikriitikute poolt valitud viiekümne kahest läbi aegade parimaks valitud filmist (<a href="https://en.wikipedia.org/wiki/The_Sight_%26_Sound_Top_50_Greatest_Films_of_All_Time">The Sight & Sound Top 50</a>). Tabeli struktuur on järgnev:</p>
+
+<pre class="code-block">
+  id            INTEGER       -- unikaalne identifikaator
+  title         TEXT          -- pealkiri
+  director      TEXT          -- režissöör
+  release_date  DATE          -- esilinastuse kuupäev
+  votes         INTEGER       -- kriitikute häälte arv
+  runtime       INTEGER       -- filmi kestus
+  country       TEXT          -- filmi päritolumaa
+</pre>
+
+<p>Päringutulemuste filtreerimiseks tuleb kasutada WHERE-klauslit, millele järgnevad tingimused. Näiteks kui soovime teada filmi “La Dolce Vita” režissööri, siis teeme järgneva päringu:</p>
+
+<pre class="code-block">
+  <code><b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> title = 'La Dolce Vita';</code>
+</pre>
+
+<p>Oluline on meelde jätta, et sõned kirjutatakse SQL-is ühekordsete sulgude vahele. Juhul, kui sõne sisaldab juba ühekordset ülakoma, siis tuleb kirjutada sõnes selle asemel kaks ühekordset ülakoma teineteise järel:
+</p>
+
+<pre class="code-block">
+  <code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> title = 'L''Avventura';</code>
+</pre>
+
+Arvude puhul on võimalik rakendada ka operaatoreid >, <, >= ja <=. Järgnev päring tagastab kõik filmid, mis on pikemad kui 120 minutit:
+
+<pre class="code-block">
+  <code><b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> runtime >= 120;</code>
+</pre>
+
+<p>Järgmises peatükis vaatame, kuidas saab lisada WHERE-klauslile mitu tingimust.</p>
