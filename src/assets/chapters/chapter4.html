@@ -1,0 +1,16 @@
+<h1>4. ORDER BY</h1>
+
+<h2>ORDER BY</h2>
+
+<p>Päringutulemuste sorteerimiseks kasutatakse ORDER BY klauslit. ORDER BY järele tuleks lisada veerunimed, mille järgi sorteeritakse tulemusi, kui ka sorteerimise suund - ASC kasvav, DESC kahanev. Suuna määramata jätmisel sorteeritakse kirjed vaikimisi kasvavalt. Järgneva kahe päringu seast tagastab esimene päring kõik kirjed pealkirja järgi kasvavalt ning teine päring kahanevalt:</p>
+
+<pre class="code-block"><code><b>SELECT</b> * <b>FROM</b> film <b>ORDER BY</b> title <b>ASC</b>;
+<b>SELECT</b> * <b>FROM</b> film <b>ORDER BY</b> title <b>DESC</b>;</code>
+</pre>
+
+<h2>Mitme veeru järgi sorteerimine</h2>
+
+<p>Võimalik on sorteerida ka mitme veeru järgi, eraldades need komadega. Järgnev päring sorteerib kirjed kasvavas järjekorras esmalt režissööri ning siis pealkirja järgi:</p>
+
+<pre class="code-block"><code><b>SELECT</b> * <b>FROM</b> film <b>ORDER BY</b> director <b>ASC</b>, title <b>ASC</b>;</code>
+</pre>
