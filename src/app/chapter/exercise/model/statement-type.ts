@@ -1,3 +1,4 @@
 export enum StatementType {
-  SELECT = 'SELECT'
+  SELECT = 'SELECT',
+  ORDER = 'ORDER'
 }
