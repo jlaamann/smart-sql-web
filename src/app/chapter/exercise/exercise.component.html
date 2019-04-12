@@ -1,12 +1,13 @@
-<h1>Harjutused</h1>
-<div class="exercise-question" *ngFor="let exercise of exercises; let i = index" [attr.data-index]="i">
-  <p *ngIf="showLastResult(exercise.id)"><i class="{{getIcon(exercise.id)}}"></i> {{getLastResultText(exercise.id)}}</p>
-  <h3>{{i+1}}. {{exercise.question}}</h3>
-  <mat-form-field class="sql-input">
-    <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
-  </mat-form-field>
-  <button mat-button (click)="runSQL(exercise.id, sqlInput.value)"><i class="fas fa-caret-right"></i> Käivita SQL</button>
-  <button mat-button (click)="toggleShowAnswer(exercise.id)"><i class="fas fa-question-circle"></i> {{getShowAnswerText(exercise.id)}}</button>
-  <h3 *ngIf="showAnswer(exercise.id)">Vastus: {{exercise.answer}}</h3>
-
+<div *ngIf="exercises.length > 0" class="exercises">
+  <h1>Harjutused</h1>
+  <div class="exercise-question" *ngFor="let exercise of exercises; let i = index" [attr.data-index]="i">
+    <p *ngIf="showLastResult(exercise.id)"><i class="{{getIcon(exercise.id)}}"></i> {{getLastResultText(exercise.id)}}</p>
+    <h3>{{i+1}}. {{exercise.question}}</h3>
+    <mat-form-field class="sql-input">
+      <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
+    </mat-form-field>
+    <button mat-button (click)="runSQL(exercise.id, sqlInput.value)"><i class="fas fa-caret-right"></i> Käivita SQL</button>
+    <button mat-button (click)="toggleShowAnswer(exercise.id)"><i class="fas fa-question-circle"></i> {{getShowAnswerText(exercise.id)}}</button>
+    <h3 *ngIf="showAnswer(exercise.id)">Vastus: {{exercise.answer}}</h3>
+  </div>
 </div>
