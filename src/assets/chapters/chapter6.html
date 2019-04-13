@@ -1,1 +1,29 @@
 <h1>6. INSERT, UPDATE ja DELETE</h1>
+
+<h2>INSERT</h2>
+
+<p>Andmete sisestamine tabelisse käib INSERT INTO lausega.</p>
+
+<pre class="code-block"><code><b>INSERT INTO</b> album (pealkiri, autor, aasta)
+  <b>VALUES</b> ('Heroes', 'David Bowie', 1977);</code>
+</pre>
+
+<h2>UPDATE</h2>
+
+<p>Olemasolevate andmete uuendamine käib UPDATE lausega.</p>
+
+<pre class="code-block"><code><b>UPDATE</b> kasutaja <b>SET</b> kasutajanimi = 'uus_kasutajanimi'
+  <b>WHERE</b> kasutajanimi = 'vana_kasutajanimi';</code>
+</pre>
+
+<p>Kui WHERE klausel jäetakse lisamata, siis uuendatakse kõiki kirjeid.</p>
+
+<h2>DELETE</h2>
+
+<pre class="code-block"><code><b>DELETE FROM</b> töötaja <b>WHERE</b> isikukood = '123456789';</code>
+</pre>
+
+<p>Kui WHERE klausel jäetakse lisamata, siis kustutatakse kõik kirjed.</p>
+
+
+
