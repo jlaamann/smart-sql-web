@@ -14,6 +14,7 @@ import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
 import sql from 'highlight.js/lib/languages/sql';
 import {NgProgressModule} from "@ngx-progressbar/core";
+import {FooterComponent} from "./footer/footer.component";
 
 export function hljsLanguages() {
   return [
@@ -26,6 +27,7 @@ export function hljsLanguages() {
     AppComponent,
     NavigationComponent,
     PanelComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
