@@ -2,7 +2,7 @@
 
 <h2>SELECT ja FROM</h2>
 
-<p>Andmete pärimiseks andmebaasist kasutatakse SELECT-lauset. Kõik päringud sisaldavad vähemalt kahte klauslit - SELECT ja FROM. SELECTiga määrame, milliseid veerge päringu tulemusena soovime. Tabelist on võimalik valida ka kõiki veerge, kasutades SELECTi järel tärni. FROM-klausliga määrame tabeli, kust andmed päritakse.</p>
+<p>Andmete pärimiseks andmebaasist kasutatakse SELECT-lauset. Kõik päringud sisaldavad vähemalt kahte klauslit - SELECT ja FROM. SELECTiga määrame, mida päringu tulemusena soovime. Päringu tulemuste seas võivad olla nii tabeliveerud, funktsioonid ja konstandid. Tabelist on võimalik valida ka kõiki veerge, kasutades SELECTi järel tärni. FROM-klausliga määrame tabeli, kust andmed päritakse.</p>
 
 <pre class="code-block">
   <code><b>SELECT</b> * <b>FROM</b> tabel;
@@ -29,7 +29,7 @@
   <code><b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> title = 'La Dolce Vita';</code>
 </pre>
 
-<p>Oluline on meelde jätta, et sõned kirjutatakse SQL-is ühekordsete sulgude vahele. Juhul, kui sõne sisaldab juba ühekordset ülakoma, siis tuleb kirjutada sõnes selle asemel kaks ühekordset ülakoma teineteise järel:
+<p>Oluline on meelde jätta, et sõned kirjutatakse SQL-is ühekordsete jutumärkide vahele. Juhul, kui sõne sisaldab juba ühekordset ülakoma, siis tuleb kirjutada sõnes selle asemel kaks ühekordset ülakoma teineteise järel:
 </p>
 
 <pre class="code-block">
