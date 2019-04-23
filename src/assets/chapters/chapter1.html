@@ -2,7 +2,7 @@
 
 <h2>SELECT ja FROM</h2>
 
-<p>Andmete pärimiseks andmebaasist kasutatakse SELECT-lauset. Kõik päringud sisaldavad vähemalt kahte klauslit - SELECT ja FROM. SELECTiga määrame, mida päringu tulemusena soovime. Päringu tulemuste seas võivad olla nii tabeliveerud, funktsioonid ja konstandid. Tabelist on võimalik valida ka kõiki veerge, kasutades SELECTi järel tärni. FROM-klausliga määrame tabeli, kust andmed päritakse.</p>
+<p>Andmete pärimiseks andmebaasist kasutatakse SELECT lauset. Kõik päringud sisaldavad vähemalt kahte klauslit - SELECT ja FROM. SELECTiga määrame, mida päringu tulemusena soovime. Päringu tulemuste seas võivad olla nii tabeliveerud, funktsioonid ja konstandid. Tabelist on võimalik valida ka kõiki veerge, kasutades SELECTi järel tärni. FROM klausliga määrame tabeli, kust andmed päritakse.</p>
 
 <pre class="code-block">
   <code><b>SELECT</b> * <b>FROM</b> tabel;
@@ -23,7 +23,7 @@
   country       TEXT          -- filmi päritolumaa
 </pre>
 
-<p>Päringutulemuste filtreerimiseks tuleb kasutada WHERE-klauslit, millele järgnevad tingimused. Näiteks kui soovime teada filmi “La Dolce Vita” režissööri, siis teeme järgneva päringu:</p>
+<p>Päringutulemuste filtreerimiseks tuleb kasutada WHERE klauslit, millele järgnevad tingimused. Näiteks kui soovime teada filmi “La Dolce Vita” režissööri, siis teeme järgneva päringu:</p>
 
 <pre class="code-block">
   <code><b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> title = 'La Dolce Vita';</code>
@@ -43,4 +43,4 @@ Arvude ja kuupäevade puhul on võimalik rakendada ka operaatoreid >, <, >= ja <
   <b>SELECT</b> * <b>FROM</b> film <b>WHERE</b> release_date > '01-FEB-1980'</code>
 </pre>
 
-<p>Järgmises peatükis vaatame, kuidas saab lisada WHERE-klauslile mitu tingimust.</p>
+<p>Järgmises peatükis vaatame, kuidas saab lisada WHERE klauslile mitu tingimust.</p>
