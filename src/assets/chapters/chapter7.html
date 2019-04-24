@@ -2,7 +2,7 @@
 
 <h2>Primaar- ja välisvõti</h2>
 
-<p>Tabelil võib olla primaarvõti, millega saab ühe tabeli kirjeid teistest eristada. Primaarvõti peab olema nullist erinev unikaalne väärtus. Primaarvõtit saab lisada kas tabeli loomisel, või ka siis, kui tabel on juba olemas.</p>
+<p>Tabelil võib olla primaarvõti, millega saab tabeli kirjeid teistest eristada. Primaarvõti peab olema nullist erinev unikaalne väärtus. Primaarvõtit saab lisada kas tabeli loomisel või ka siis, kui tabel on juba olemas.</p>
 
 <pre class="code-block"><code><b>CREATE TABLE</b> tabel (
   id <b>INTEGER PRIMARY KEY</b>,
@@ -23,7 +23,7 @@
   <b>FOREIGN KEY</b> kasutaja_id <b>REFERENCES</b> kasutaja (id);</code>
 </pre>
 
-<p>All oleval pildid näeb näidet andmebaasi skeemist, mis koosneb kolmest omavahel seotud tabelist. Tabel <i>lugu</i> on seotud tabeliga <i>artist</i> välja <i>artist_id</i> ning tabeliga <i>album</i> välja <i>album_id</i> kaudu. Tabel <i>album</i> on seotud tabeliga <i>artist</i> välja <i>artist_id</i> kaudu.</p>
+<p>All oleval pildid näeb näidet andmebaasi skeemist, mis koosneb kolmest omavahel seotud tabelist. Tabel <i>lugu</i> on seotud tabeliga <i>artist</i> välja <i>artist_id</i> kaudu ning tabeliga <i>album</i> välja <i>album_id</i> kaudu. Tabel <i>album</i> on seotud tabeliga <i>artist</i> välja <i>artist_id</i> kaudu.</p>
 
 <img src="https://i.imgur.com/igygI20.png">
 
