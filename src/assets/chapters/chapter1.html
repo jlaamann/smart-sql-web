@@ -29,6 +29,13 @@
   <code><b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> title = 'La Dolce Vita';</code>
 </pre>
 
+<p>PostgreSQL-is on eelnev päring tõstutundlik ehk veeru väärtus peab vastama nii suur- ja väiketähtede osas andmebaasis olevale kirjele. Selleks, et teha tõstutundetut päringut, tuleks kasutada kas võtmesõna ILIKE või rakendada funktsiooni LOWER nii veerule kui ka sõnele:</p>
+
+<pre class="code-block">
+  <code><b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> title ILIKE 'la dolce vita';
+  <b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> LOWER(title) = LOWER('LA DOLCE VITA');</code>
+</pre>
+
 <p>Oluline on meelde jätta, et sõned kirjutatakse SQL-is ühekordsete jutumärkide vahele. Juhul, kui sõne sisaldab juba ühekordset ülakoma, siis tuleb kirjutada sõnes selle asemel kaks ühekordset ülakoma teineteise järel:
 </p>
 
