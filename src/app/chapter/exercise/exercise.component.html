@@ -1,8 +1,8 @@
 <div *ngIf="exercises.length > 0" class="exercises">
   <h1>Harjutused</h1>
   <div class="exercise-question" *ngFor="let exercise of exercises; let i = index" [attr.data-index]="i">
-    <p *ngIf="showLastResult(exercise.id)"><i class="{{getIcon(exercise.id)}}"></i> {{getLastResultText(exercise.id)}}</p>
     <h3>{{i+1}}. {{exercise.question}}</h3>
+    <p *ngIf="showLastResult(exercise.id)"><i class="{{getIcon(exercise.id)}}"></i> {{getLastResultText(exercise.id)}}</p>
     <mat-form-field class="sql-input">
       <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
     </mat-form-field>
