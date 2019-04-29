@@ -1,29 +1,85 @@
-<h1>6. INSERT, UPDATE ja DELETE</h1>
+<h1>6. Tabelite loomine</h1>
 
-<h2>INSERT</h2>
+<h2>CREATE TABLE</h2>
 
-<p>Andmete sisestamine tabelisse käib INSERT INTO lausega.</p>
+<p>Tabelite loomiseks kasutatakse lauset CREATE TABLE.</p>
 
-<pre class="code-block"><code><b>INSERT INTO</b> album (pealkiri, autor, aasta)
-  <b>VALUES</b> ('Heroes', 'David Bowie', 1977);</code>
+<pre class="code-block"><code><b>CREATE TABLE</b> kasutaja (
+  id <b>SERIAL PRIMARY KEY</b>,
+  kasutajanimi <b>TEXT</b>,
+  registreerimise_kp <b>DATE</b>
+);</code>
 </pre>
 
-<h2>UPDATE</h2>
+<h2>Veergude andmetüübid</h2>
 
-<p>Olemasolevate andmete uuendamine käib UPDATE lausega.</p>
+<p>Iga veeru nimele peab järgnema veerutüüp. PostgreSQL-is on neid mitmeid, siin on toodud väike ülevaade enamlevinud tüüpidest.</p>
 
-<pre class="code-block"><code><b>UPDATE</b> kasutaja <b>SET</b> kasutajanimi = 'uus_kasutajanimi'
-  <b>WHERE</b> kasutajanimi = 'vana_kasutajanimi';</code>
+<table style="width:100%">
+  <tr>
+    <th align="left">Andmetüüp</th>
+    <th align="left">Kirjeldus</th>
+  </tr>
+  <tr>
+    <td align="left">BOOLEAN</td>
+    <td align="left">tõeväärtus (true/false)</td>
+  </tr>
+  <tr>
+    <td align="left">INTEGER</td>
+    <td align="left">4-baidine täisarv</td>
+  </tr>
+  <tr>
+    <td align="left">SERIAL</td>
+    <td align="left">automaatselt kasvav 4-baidine täisarv</td>
+  </tr>
+  <tr>
+    <td align="left">TEXT</td>
+    <td align="left">sõne</td>
+  </tr>
+  <tr>
+    <td align="left">DATE</td>
+    <td align="left">kuupäev (aasta, kuu, päev)</td>
+  </tr>
+  <tr>
+    <td align="left">TIMESTAMP</td>
+    <td align="left">kuupäev kellaajaga</td>
+  </tr>
+</table>
+<br>
+
+<h2>Veergude kitsendused</h2>
+<table style="width:100%">
+  <tr>
+    <th align="left">Kitsendus</th>
+    <th align="left">Kirjeldus</th>
+  </tr>
+  <tr>
+    <td align="left">NOT NULL</td>
+    <td align="left">veerg ei tohi sisaldada tühiväärtust (NULL)</td>
+  </tr>
+  <tr>
+    <td align="left">PRIMARY KEY</td>
+    <td align="left">primaarvõti - veerg ei saa olla NULL ning peab olema unikaalne</td>
+  </tr>
+  <tr>
+    <td align="left">UNIQUE</td>
+    <td align="left">veeru väärtus peab olema unikaalne</td>
+  </tr>
+  <tr>
+    <td align="left">DEFAULT</td>
+    <td align="left">veeru vaikeväärtus</td>
+  </tr>
+  <tr>
+    <td align="left">CHECK</td>
+    <td align="left">veeru väärtus peab vastama tingimusele</td>
+  </tr>
+</table>
+<br>
+Näide:
+<pre class="code-block"><code><b>CREATE TABLE</b> film (
+  id <b>SERIAL PRIMARY KEY</b>,
+  ...
+  pikkus <b>INTEGER CHECK (pikkus > 0)</b>,
+  hinne <b>INTEGER DEFAULT</b> 7
+);</code>
 </pre>
-
-<p>Kui WHERE klausel jäetakse lisamata, siis uuendatakse kõiki kirjeid.</p>
-
-<h2>DELETE</h2>
-
-<pre class="code-block"><code><b>DELETE FROM</b> töötaja <b>WHERE</b> isikukood = '123456789';</code>
-</pre>
-
-<p>Kui WHERE klausel jäetakse lisamata, siis kustutatakse kõik kirjed.</p>
-
-
-

@@ -1,55 +1,29 @@
-<h1>7. Tabelite seostamine</h1>
+<h1>7. INSERT, UPDATE ja DELETE</h1>
 
-<h2>Primaar- ja välisvõti</h2>
+<h2>INSERT</h2>
 
-<p>Tabelil võib olla primaarvõti, millega saab tabeli kirjeid teistest eristada. Primaarvõti peab olema nullist erinev unikaalne väärtus. Primaarvõtit saab lisada kas tabeli loomisel või ka siis, kui tabel on juba olemas. Alljärgnevas näites näeb kahte võimalikku viisi primaarvõtme lisamiseks veerule:</p>
+<p>Andmete sisestamine tabelisse käib INSERT INTO lausega.</p>
 
-<pre class="code-block"><code><b>CREATE TABLE</b> tabel (
-  id <b>INTEGER PRIMARY KEY</b>,
-  ...
-);
-
-<b>ALTER TABLE</b> tabel <b>ADD PRIMARY KEY</b> (id);</code>
+<pre class="code-block"><code><b>INSERT INTO</b> album (pealkiri, autor, aasta)
+  <b>VALUES</b> ('Heroes', 'David Bowie', 1977);</code>
 </pre>
 
-<p>Tabeli väli võib viidata ka teisele tabelile. Sellist välja nimetatakse välisvõtmeks. Välisvõtme saab määrata nii olemasolevale tabelile kui ka uuele tabelile selle loomisel, seejuures peavad seostavate väljade tüübid olema identsed. All on näitena toodud kaks viisi välisvõtme lisamiseks:</p>
+<h2>UPDATE</h2>
 
-<pre class="code-block"><code><b>CREATE TABLE</b> kommentaar (
-  ... ,
-  <b>FOREIGN KEY</b> (kasutaja_id) <b>REFERENCES</b> kasutaja (id)
-);
+<p>Olemasolevate andmete uuendamine käib UPDATE lausega.</p>
 
-<b>ALTER TABLE</b> kommentaar <b>ADD CONSTRAINT</b> fk_kommentaar_to_kasutaja
-  <b>FOREIGN KEY</b> kasutaja_id <b>REFERENCES</b> kasutaja (id);</code>
+<pre class="code-block"><code><b>UPDATE</b> kasutaja <b>SET</b> kasutajanimi = 'uus_kasutajanimi'
+  <b>WHERE</b> kasutajanimi = 'vana_kasutajanimi';</code>
 </pre>
 
-<p>Alloleval pildid näeb näidet andmebaasi skeemist, mis koosneb kolmest omavahel seotud tabelist. Tabel <i>lugu</i> on seotud tabeliga <i>artist</i> välja <i>artist_id</i> kaudu ning tabeliga <i>album</i> välja <i>album_id</i> kaudu. Tabel <i>album</i> on seotud tabeliga <i>artist</i> välja <i>artist_id</i> kaudu.</p>
+<p>Kui WHERE klausel jäetakse lisamata, siis uuendatakse kõiki kirjeid.</p>
 
-<img src="https://i.imgur.com/igygI20.png">
+<h2>DELETE</h2>
 
-
-<h2>Tabelite seostamine</h2>
-
-<p>Juhul, kui on vaja, et päring tagastaks andmeid mitmest tabelist, siis tuleb need tabelid omavahel seostada välis- ja primaarvõtmete kaudu.</p>
-
-<h2>INNER JOIN</h2>
-
-<p>INNER JOIN tagastab andmeid vaid siis, kui need leiduvad mõlemas tabelis. Näiteks kui soovime leida kõik andmebaasis olevate lugude nimed koos albumi pealkirja ja artisti nimega, siis tuleks kasutada INNER JOINi järgnevalt:</p>
-
-<pre class="code-block"><code><b>SELECT</b> lugu.pealkiri, album.pealkiri, artist.id
-<b>FROM</b> lugu
-<b>JOIN</b> album <b>ON</b> album.id = lugu.album_id
-<b>JOIN</b> artist <b>ON</b> artist.id = lugu.artist_id;</code>
+<pre class="code-block"><code><b>DELETE FROM</b> töötaja <b>WHERE</b> isikukood = '123456789';</code>
 </pre>
 
-<p>JOIN ilma sellele eelneva võtmesõnata INNER on samaväärne INNER JOINile.</p>
+<p>Kui WHERE klausel jäetakse lisamata, siis kustutatakse kõik kirjed.</p>
 
-<h2>LEFT JOIN</h2>
 
-<p>Juhul, kui tahame, et päring tagastaks tulemuse ka siis, kui seostatavas tabelis kirje puudub, tuleks kasutada LEFT JOINi.</p>
 
-<pre class="code-block"><code><b>SELECT</b> lugu.pealkiri, album.pealkiri, artist.id
-<b>FROM</b> lugu
-<b>LEFT JOIN</b> album <b>ON</b> album.id = lugu.album_id
-<b>LEFT JOIN</b> artist <b>ON</b> artist.id = lugu.artist_id;</code>
-</pre>
