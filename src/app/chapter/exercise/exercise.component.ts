@@ -62,8 +62,6 @@ export class ExerciseComponent implements OnChanges, OnInit {
   updateConsole(exerciseId: number, result: ExerciseResult): void {
     this.columnsMap[exerciseId] = result.columns;
     this.valuesMap[exerciseId] = result.values;
-    // this.cols = result.columns;
-    // this.vals = result.values;
   }
 
   showLastResult(exerciseId): boolean {
