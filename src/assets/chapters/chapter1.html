@@ -13,15 +13,49 @@
 
 <p>Meil on olemas tabel <b>film</b>, mille põhjal saab harjutuste sektsioonis ülesandeid lahendada. Tabel sisaldab kirjeid filmikriitikute poolt valitud viiekümne kahest läbi aegade parimast filmist (<a href="https://en.wikipedia.org/wiki/The_Sight_%26_Sound_Top_50_Greatest_Films_of_All_Time">The Sight & Sound Top 50</a>). Tabeli struktuur on järgnev:</p>
 
-<pre class="code-block">
-  id            INTEGER       -- unikaalne identifikaator
-  title         TEXT          -- pealkiri
-  director      TEXT          -- režissöör
-  release_date  DATE          -- esilinastuse kuupäev
-  votes         INTEGER       -- kriitikute häälte arv
-  runtime       INTEGER       -- filmi kestus minutites
-  country       TEXT          -- filmi päritolumaa
-</pre>
+<table style="width:100%">
+  <tr>
+    <th align="left">Veerg</th>
+    <th align="left">Tüüp</th>
+    <th align="left">Kirjeldus</th>
+  </tr>
+  <tr>
+    <td align="left">id</td>
+    <td align="left">INTEGER</td>
+    <td align="left">unikaalne identifikaator</td>
+  </tr>
+  <tr>
+    <td align="left">title</td>
+    <td align="left">TEXT</td>
+    <td align="left">pealkiri</td>
+  </tr>
+  <tr>
+    <td align="left">director</td>
+    <td align="left">TEXT</td>
+    <td align="left">režissöör</td>
+  </tr>
+  <tr>
+    <td align="left">release_date</td>
+    <td align="left">DATE</td>
+    <td align="left">esilinastuse kuupäev</td>
+  </tr>
+  <tr>
+    <td align="left">votes</td>
+    <td align="left">INTEGER</td>
+    <td align="left">kriitikute häälte arv</td>
+  </tr>
+  <tr>
+    <td align="left">runtime</td>
+    <td align="left">INTEGER</td>
+    <td align="left">filmi kestus minutites</td>
+  </tr>
+  <tr>
+    <td align="left">country</td>
+    <td align="left">TEXT</td>
+    <td align="left">filmi päritolumaa</td>
+  </tr>
+</table>
+<br>
 
 <p>Päringutulemuste filtreerimiseks tuleb kasutada WHERE klauslit, millele järgnevad tingimused. Näiteks kui soovime teada filmi “La Dolce Vita” režissööri, siis teeme järgneva päringu:</p>
 
@@ -29,11 +63,13 @@
   <code><b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> title = 'La Dolce Vita';</code>
 </pre>
 
-<p>PostgreSQL-is on eelnev päring tõstutundlik ehk veeru väärtus peab vastama nii suur- ja väiketähtede osas andmebaasis olevale kirjele. Selleks, et teha tõstutundetut päringut, tuleks kasutada kas võtmesõna ILIKE või rakendada funktsiooni LOWER nii veerule kui ka sõnele:</p>
+<p>PostgreSQL-is on eelnev päring tõstutundlik ehk veeru väärtus peab vastama nii suur- ja väiketähtede osas andmebaasis olevale kirjele. Selleks, et teha tõstutundetut päringut, tuleks kasutada kas võtmesõna ILIKE või rakendada funktsiooni LOWER või UPPER nii veerule kui ka sõnele:</p>
 
 <pre class="code-block">
   <code><b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> title ILIKE 'la dolce vita';
-  <b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> LOWER(title) = LOWER('LA DOLCE VITA');</code>
+  <b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> LOWER(title) = LOWER('LA DOLCE VITA');
+  <b>SELECT</b> director <b>FROM</b> film <b>WHERE</b> UPPER(title) = UPPER('LA DOLCE VITA');</code>
+
 </pre>
 
 <p>Oluline on meelde jätta, et sõned kirjutatakse SQL-is ühekordsete jutumärkide vahele. Juhul, kui sõne sisaldab juba ühekordset ülakoma, siis tuleb kirjutada sõnes selle asemel kaks ühekordset ülakoma teineteise järel:
