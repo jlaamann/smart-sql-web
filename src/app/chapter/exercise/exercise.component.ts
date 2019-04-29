@@ -4,6 +4,7 @@ import {ExerciseResult} from "./model/exercise-result";
 import {QueryResult} from "./model/query-result";
 import {Exercise} from "./model/exercise";
 import {NgProgress, NgProgressRef} from "@ngx-progressbar/core";
+import {StatementType} from "./model/statement-type";
 
 @Component({
   selector: 'app-exercise',
@@ -16,6 +17,8 @@ export class ExerciseComponent implements OnChanges, OnInit {
   exercises: Exercise[] = [];
   resultMap: { [key: number]: ExerciseResult} = {};
   showAnswerMap: { [key: number]: boolean} = {};
+  columnsMap: { [key: number]: string[]} = {};
+  valuesMap: { [key: number]: string[][]} = {};
   progressRef: NgProgressRef;
 
   // todo remove later
@@ -45,14 +48,22 @@ export class ExerciseComponent implements OnChanges, OnInit {
       });
   }
 
-  runSQL(exerciseId, query) {
+  runSQL(exerciseId, query): void {
     this.progressRef.start();
     this.resultMap[exerciseId] = undefined;
     this.exerciseService.validateSql(exerciseId, query)
-      .then(res => {
+      .then((res: ExerciseResult) => {
         this.progressRef.complete();
         this.resultMap[exerciseId] = res;
+        this.updateConsole(exerciseId, res);
       });
+  }
+
+  updateConsole(exerciseId: number, result: ExerciseResult): void {
+    this.columnsMap[exerciseId] = result.columns;
+    this.valuesMap[exerciseId] = result.values;
+    // this.cols = result.columns;
+    // this.vals = result.values;
   }
 
   showLastResult(exerciseId): boolean {
@@ -93,5 +104,10 @@ export class ExerciseComponent implements OnChanges, OnInit {
 
   getShowAnswerText(id: number): string {
     return this.showAnswerMap[id] === false ? 'Kuva vastus' : 'Peida vastus';
+  }
+
+  showConsole(exercise: Exercise) {
+    return this.showLastResult(exercise.id) && (exercise.type === StatementType.SELECT
+      || exercise.type === StatementType.ORDER);
   }
 }

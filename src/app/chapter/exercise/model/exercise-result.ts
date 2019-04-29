@@ -7,4 +7,6 @@ export class ExerciseResult {
   }
 
   queryResult: QueryResult = undefined;
+  columns: string[] = undefined;
+  values: string[][] = undefined;
 }
