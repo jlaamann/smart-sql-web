@@ -4,7 +4,7 @@ import {ChapterComponent} from './chapter.component';
 import {ChapterRoutingModule} from './chapter-routing.module';
 import {HighlightModule} from "ngx-highlightjs";
 import {ExerciseComponent} from './exercise/exercise.component';
-import {MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatInputModule} from "@angular/material";
 import {ExerciseRepository} from "./exercise/repository/exercise-repository";
 import {HttpClientModule} from "@angular/common/http";
 import {ResultTableComponent} from "./resultTable/result-table.component";
@@ -22,7 +22,8 @@ import {ResultTableComponent} from "./resultTable/result-table.component";
     MatInputModule,
     MatButtonModule,
     HttpClientModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule
   ],
   providers: [
     ExerciseRepository,

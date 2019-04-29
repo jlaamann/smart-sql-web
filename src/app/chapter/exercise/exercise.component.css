@@ -3,14 +3,22 @@
   font-family: Consolas, monospace;
 }
 
-.exercise-question {
+.exercise-questions {
   margin-bottom: 2em;
 }
 
+.exercise-question {
+  margin-bottom: 3em;
+}
+
 .result-icon-correct {
-  color: forestgreen;
+  color: #004528;
 }
 
 .result-icon-false {
   color: darkred;
+}
+
+.mat-card {
+  margin: 1em 0;
 }

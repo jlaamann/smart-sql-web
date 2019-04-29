@@ -1,14 +1,23 @@
 <div *ngIf="exercises.length > 0" class="exercises">
   <h1>Harjutused</h1>
-  <div class="exercise-question" *ngFor="let exercise of exercises; let i = index" [attr.data-index]="i">
-    <h3>{{i+1}}. {{exercise.question}}</h3>
-    <p *ngIf="showLastResult(exercise.id)"><span><i class="{{getIcon(exercise.id)}}"></i> <b>  {{getLastResultText(exercise.id)}}</b></span></p>
-    <mat-form-field class="sql-input">
-      <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
-    </mat-form-field>
-    <button mat-button (click)="runSQL(exercise.id, sqlInput.value)"><i class="fas fa-caret-right"></i> Käivita SQL</button>
-    <button mat-button (click)="toggleShowAnswer(exercise.id)"><i class="fas fa-question-circle"></i> {{getShowAnswerText(exercise.id)}}</button>
-    <h3 *ngIf="showAnswer(exercise.id)">Vastus: {{exercise.answer}}</h3>
-    <app-result-table *ngIf="showConsole(exercise)" [columns]="columnsMap[exercise.id]" [values]="valuesMap[exercise.id]"></app-result-table>
+  <div class="exercise-questions" *ngFor="let exercise of exercises; let i = index" [attr.data-index]="i">
+    <div class="exercise-question">
+      <h3>{{i+1}}. {{exercise.question}}</h3>
+
+      <mat-card [style.background-color]="getCardStyle(exercise.id)" *ngIf="showLastResult(exercise.id)"><span><i class="{{getIcon(exercise.id)}}"></i> <b>  {{getLastResultText(exercise.id)}}</b></span></mat-card>
+
+      <mat-form-field class="sql-input">
+        <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
+      </mat-form-field>
+
+      <div class="exercise-buttons">
+        <button mat-button (click)="runSQL(exercise.id, sqlInput.value)"><span><i class="fas fa-caret-right"></i> Käivita SQL</span></button>
+        <button mat-button (click)="toggleShowAnswer(exercise.id)"><span><i class="fas fa-question-circle"></i> {{getShowAnswerText(exercise.id)}}</span></button>
+      </div>
+
+      <h3 *ngIf="showAnswer(exercise.id)">Vastus: {{exercise.answer}}</h3>
+
+      <app-result-table *ngIf="showConsole(exercise)" [columns]="columnsMap[exercise.id]" [values]="valuesMap[exercise.id]"></app-result-table>
+    </div>
   </div>
 </div>

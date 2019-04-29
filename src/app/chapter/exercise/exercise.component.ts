@@ -104,8 +104,12 @@ export class ExerciseComponent implements OnChanges, OnInit {
     return this.showAnswerMap[id] === false ? 'Kuva vastus' : 'Peida vastus';
   }
 
-  showConsole(exercise: Exercise) {
+  showConsole(exercise: Exercise): boolean {
     return this.showLastResult(exercise.id) && (exercise.type === StatementType.SELECT
       || exercise.type === StatementType.ORDER);
+  }
+
+  getCardStyle(exerciseId: number) {
+    return this.resultMap[exerciseId].queryResult === QueryResult.OK ? '#cdeecc' : '#fceedd';
   }
 }
