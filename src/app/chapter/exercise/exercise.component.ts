@@ -110,6 +110,6 @@ export class ExerciseComponent implements OnChanges, OnInit {
   }
 
   getCardStyle(exerciseId: number) {
-    return this.resultMap[exerciseId].queryResult === QueryResult.OK ? '#cdeecc' : '#fceedd';
+    return this.resultMap[exerciseId].queryResult === QueryResult.OK ? '#cdeecc' : '#fcfae3';
   }
 }
