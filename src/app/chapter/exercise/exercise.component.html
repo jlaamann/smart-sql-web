@@ -4,7 +4,7 @@
     <div class="exercise-question">
       <h3>{{i+1}}. {{exercise.question}}</h3>
 
-      <mat-card [style.background-color]="getCardStyle(exercise.id)" *ngIf="showLastResult(exercise.id)"><span><i class="{{getIcon(exercise.id)}}"></i> <b>  {{getLastResultText(exercise.id)}}</b></span></mat-card>
+      <mat-card [style.background-color]="getCardStyle(exercise.id)" *ngIf="showLastResult(exercise.id)"><span><i class="{{getIcon(exercise.id)}}"></i> {{getLastResultText(exercise.id)}}</span></mat-card>
 
       <mat-form-field class="sql-input">
         <textarea #sqlInput matInput placeholder="Sisesta SQL"></textarea>
