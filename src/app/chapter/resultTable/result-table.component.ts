@@ -4,7 +4,7 @@ import {Component, Input} from "@angular/core";
   selector: 'app-result-table',
   styleUrls: ['./result-table.component.css'],
   template: `
-    <mat-expansion-panel class="result-table">
+    <mat-expansion-panel [expanded]="true" class="result-table">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <span><i class="fas fa-terminal"></i> konsool</span>
