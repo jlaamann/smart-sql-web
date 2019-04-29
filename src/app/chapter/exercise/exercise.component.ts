@@ -18,6 +18,10 @@ export class ExerciseComponent implements OnChanges, OnInit {
   showAnswerMap: { [key: number]: boolean} = {};
   progressRef: NgProgressRef;
 
+  // todo remove later
+  cols = ['id', 'title', 'director'];
+  vals = [['0', 'La Dolce Vita', 'Federico Fellini'], ['2', 'Jean Luc Godard', 'Breathless']];
+
   constructor(private exerciseService: ExerciseService,
               private ngProgress: NgProgress) {
   }

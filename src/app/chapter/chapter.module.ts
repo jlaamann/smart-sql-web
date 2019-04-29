@@ -3,13 +3,17 @@ import {CommonModule} from '@angular/common';
 import {ChapterComponent} from './chapter.component';
 import {ChapterRoutingModule} from './chapter-routing.module';
 import {HighlightModule} from "ngx-highlightjs";
-import { ExerciseComponent } from './exercise/exercise.component';
-import {MatButtonModule, MatFormField, MatFormFieldModule, MatInputModule} from "@angular/material";
+import {ExerciseComponent} from './exercise/exercise.component';
+import {MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule} from "@angular/material";
 import {ExerciseRepository} from "./exercise/repository/exercise-repository";
 import {HttpClientModule} from "@angular/common/http";
+import {ResultTableComponent} from "./resultTable/result-table.component";
 
 @NgModule({
-  declarations: [ChapterComponent, ExerciseComponent],
+  declarations: [
+    ChapterComponent,
+    ExerciseComponent,
+    ResultTableComponent],
   imports: [
     CommonModule,
     ChapterRoutingModule,
@@ -17,7 +21,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [
     ExerciseRepository,
