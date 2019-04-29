@@ -7,7 +7,7 @@ import {Component, Input} from "@angular/core";
     <mat-expansion-panel class="result-table">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Konsool
+          <span><i class="fas fa-terminal"></i> konsool</span>
         </mat-panel-title>
         <mat-panel-description>
           Vaata päringu tagastatud tulemusi
