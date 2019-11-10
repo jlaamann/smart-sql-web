@@ -1,2 +1,32 @@
 <h1>10. Agregeerivad funktsioonid</h1>
-<p>Valmib varsti!</p>
+<p>SQL-is on võimalik rakendada mitmele reale ühte funktsiooni, mis tagastab tulemusena ainult ühe rea. Agregeerivad funktsioonid on näiteks AVG(), COUNT(), MAX(), MIN() ja SUM().</p>
+
+<h2>AVG()</h2>
+
+<p>Järgnevas näites leitakse 1 ja 10 vahel olevate arvude keskmine väärtus.</p>
+
+<pre class="code-block"><code><b>SELECT AVG</b>(arv)
+  <b>FROM</b> (<b>SELECT</b> generate_series <b>AS</b> arv <b>FROM</b> generate_series(1, 10))
+  arvud_1_kuni_10;
+</code></pre>
+
+<h2>COUNT()</h2>
+
+<p>COUNT()-i saab kasutada ridade kokku lugemiseks.</p>
+
+<pre class="code-block"><code><b>SELECT COUNT</b>(veerg)
+  <b>FROM</b> tabel;
+</code></pre>
+
+<h2>MAX()</h2>
+
+<p>MAX() leiab tagastatud veergude väärtuste seast maksimaalse väärtuse.</p>
+
+<h2>MIN()</h2>
+
+<p>MIN() leiab tagastatud veergude väärtuste seast minimaalse väärtuse.</p>
+
+<h2>SUM()</h2>
+
+<p>SUM() leiab tagastatud veergude väärtuste summa.</p>
+
