@@ -1,2 +1,8 @@
 <h1>11. GROUP BY</h1>
-<p>Valmib varsti!</p>
+<p>GROUP BY võimaldab jagada päringu tulemused eraldi gruppidesse mõne veeru väärtuse põhjal.</p>
+
+<p>Näiteks, kui tahame tabelis film sooritada päringut, mis tagastaks riigi nime koos sellest riigist pärit filmide koguarvuga, siis saame teha järgneva päringu:</p>
+
+<pre class="code-block"><code><b>SELECT</b> country, <b>COUNT</b>(*) <b>FROM</b> film <b>GROUP BY</b> country;
+</code></pre>
+
