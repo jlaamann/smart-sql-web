@@ -1,2 +1,30 @@
 <h1>5. CASE</h1>
-<p>Valmib peatselt!</p>
+
+<p>Tingimuslike kontrollide väljendamiseks on olemas SQL-is CASE võtmesõna. CASE toimib sarnaselt programmeerimiskeeltes olevale IF-ELSE kontrollidele.</p>
+
+<p>Selle põhikuju on järgnev:</p>
+
+<pre class="code-block"><code>
+  <b>CASE</b>
+  <b>WHEN</b> tingimus1 <b>THEN</b> tulemus1
+  <b>WHEN</b> tingimus2 <b>THEN</b> tulemus2
+  [<b>WHEN</b> ...]
+  [<b>ELSE</b> tulemusN]
+  <b>END</b>
+</code>
+</pre>
+
+<p>Näiteks, kui soovime lisada päringusse ühe veeru, mis defineeriks filmi pikkuse sõnaliselt, siis saaks CASEi kasutada järgnevalt:</p>
+
+<pre class="code-block"><code>
+  <b>SELECT</b>
+  *,
+  <b>CASE</b>
+    <b>WHEN</b> runtime < 30 <b>THEN</b> 'short'
+    <b>WHEN</b> runtime < 120 <b>THEN</b> 'medium'
+    <b>ELSE</b> 'long'
+  <b>END AS</b> film_type
+  <b>FROM</b> film;
+</code>
+</pre>
+
